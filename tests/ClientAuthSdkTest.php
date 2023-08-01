@@ -11,9 +11,14 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
         $publicKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-public-key.pem');
 
-        $jwt = JwtAuthHelper::toJwt(1,1, $privateKey, [
-            'testPayloadKey' => 'testPayloadValue'
-        ],
+        $jwt = JwtAuthHelper::toJwt(
+            1,
+            1,
+            'test-device',
+            $privateKey,
+            [
+                'testPayloadKey' => 'testPayloadValue'
+            ],
         [
             'testHeaderKey' => 'testHeaderValue'
         ]);

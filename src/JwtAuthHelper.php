@@ -10,6 +10,7 @@ class JwtAuthHelper
     /**
      * @param string $userId
      * @param string $appId
+     * @param string $deviceUuid
      * @param string $privateKey
      * @param array $payload
      * @param array $headers
@@ -20,6 +21,7 @@ class JwtAuthHelper
     public static function toJwt(
         string $userId,
         string $appId,
+        string $deviceUuid,
         string $privateKey,
         array $payload = [],
         array $headers = [],
@@ -32,17 +34,20 @@ class JwtAuthHelper
         $tmpPayload = array_merge([
             'uid' => null,
             'aid' => null,
+            'did' => null,
             'exp' => null,
             'iat' => null,
         ], $payload);
 
         $tmpPayload['uid'] = $userId;
         $tmpPayload['aid'] = $appId;
+        $tmpPayload['did'] = $deviceUuid;
         $tmpPayload['exp'] = ($now + $expireSeconds);
         $tmpPayload['iat'] = ($now - $skewSeconds);
 
         $headers['uid'] = $userId;
         $headers['aid'] = $appId;
+        $headers['did'] = $deviceUuid;
 
         return JWT::encode(
             $tmpPayload,
