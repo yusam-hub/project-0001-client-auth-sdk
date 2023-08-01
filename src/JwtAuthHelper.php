@@ -5,10 +5,11 @@ namespace YusamHub\Project0001ClientAuthSdk;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-class JwtHelper
+class JwtAuthHelper
 {
     /**
-     * @param string $clientId
+     * @param string $userId
+     * @param string $appId
      * @param string $privateKey
      * @param array $payload
      * @param array $headers
@@ -17,7 +18,8 @@ class JwtHelper
      * @return string
      */
     public static function toJwt(
-        string $clientId,
+        string $userId,
+        string $appId,
         string $privateKey,
         array $payload = [],
         array $headers = [],
@@ -28,14 +30,19 @@ class JwtHelper
         $now = time();
 
         $tmpPayload = array_merge([
-            'iss' => null,
+            'uid' => null,
+            'aid' => null,
             'exp' => null,
             'iat' => null,
         ], $payload);
 
-        $tmpPayload['iss'] = $clientId;
+        $tmpPayload['uid'] = $userId;
+        $tmpPayload['aid'] = $appId;
         $tmpPayload['exp'] = ($now + $expireSeconds);
         $tmpPayload['iat'] = ($now - $skewSeconds);
+
+        $headers['uid'] = $userId;
+        $headers['aid'] = $appId;
 
         return JWT::encode(
             $tmpPayload,

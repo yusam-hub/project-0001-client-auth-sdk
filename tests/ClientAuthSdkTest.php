@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tests;
 
-use YusamHub\Project0001ClientAuthSdk\JwtHelper;
+use YusamHub\Project0001ClientAuthSdk\JwtAuthHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,7 +11,7 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
         $publicKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-public-key.pem');
 
-        $jwt = JwtHelper::toJwt('info@mail.ru', $privateKey, [
+        $jwt = JwtAuthHelper::toJwt(1,1, $privateKey, [
             'testPayloadKey' => 'testPayloadValue'
         ],
         [
@@ -19,10 +19,10 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         ]);
         var_dump($jwt);
 
-        $payload = JwtHelper::fromJwtAsPayload($jwt, $publicKey);
+        $payload = JwtAuthHelper::fromJwtAsPayload($jwt, $publicKey);
         var_dump($payload);
 
-        $headers = JwtHelper::fromJwtAsHeaders($jwt);
+        $headers = JwtAuthHelper::fromJwtAsHeaders($jwt);
         var_dump($headers);
 
     }
