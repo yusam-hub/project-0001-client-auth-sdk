@@ -65,9 +65,9 @@ class ClientAuthApiFrontAppSdk
             if (empty($content)) {
                 $content = '';
             } else {
-                if ($method === 'GET') {
+                if ($method === $this->api::METHOD_GET) {
                     $content = http_build_query($content);
-                }  else {
+                } else {
                     $content = json_encode($content);
                 }
             }
@@ -77,7 +77,7 @@ class ClientAuthApiFrontAppSdk
 
     public function getAppList(): ?array
     {
-        $requestMethod = "GET";
+        $requestMethod = $this->api::METHOD_GET;
 
         $requestUri = "/api/front/app/list";
 
@@ -88,7 +88,7 @@ class ClientAuthApiFrontAppSdk
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestParams),
+                self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
             ]
         );
 
