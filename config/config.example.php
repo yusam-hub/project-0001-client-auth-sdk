@@ -3,8 +3,9 @@
 return [
     'testing' => [
         'isDebugging' => true,
-        'baseUrl' => 'http://192.168.0.110:10001',
-        'userId' => 1,
-        'privateKey' => '',
+        'baseUrl' => 'http://localhost:9081',
+        'storageLogFile' => __DIR__ . '/../tmp/curl-ext-debug.log',
+        "userId" => 0,
+        "privateKey" => ""
     ],
 ];
