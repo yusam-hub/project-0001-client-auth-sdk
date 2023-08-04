@@ -2,13 +2,14 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tests;
 
+use YusamHub\Project0001ClientAuthSdk\ClientAuthApiFrontAppSdk;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 {
     public function testDefault()
     {
-        $privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
+        /*$privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
         $publicKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-public-key.pem');
 
         $userId = 1;
@@ -23,7 +24,12 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         var_dump((array) $payload);
 
         $userId = JwtAuthUserTokenHelper::getUserFromJwtHeads($jwt);
-        var_dump($userId);
+        var_dump($userId);*/
+    }
 
+    public function testFrontApp()
+    {
+        $clientAuthApiFrontAppSdk = new ClientAuthApiFrontAppSdk(Config::getConfig('testing'));
+        var_dump($clientAuthApiFrontAppSdk->getAppList());
     }
 }

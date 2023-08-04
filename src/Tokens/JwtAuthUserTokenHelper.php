@@ -9,16 +9,16 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
 {
     /**
      * @param string $userId
-     * @param string $hashBody
      * @param string $privateKey
+     * @param string $hashBody
      * @param int $expireSeconds
      * @param int $skewSeconds
      * @return string
      */
     public static function toJwt(
         string $userId,
-        string $hashBody,
         string $privateKey,
+        string $hashBody,
         int $expireSeconds = 3600,
         int $skewSeconds = 60,
     ): string
@@ -59,7 +59,6 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
     {
         return new UserTokenPayload(static::baseFromJwtAsPayload($jwt, $publicKey));
     }
-
 
     /**
      * @param string $jwt
