@@ -27,12 +27,15 @@ class ClientAuthApiFrontAppSdk
         if (!isset($config['privateKey'])) {
             throw new \RuntimeException("privateKey not exists in config");
         }
+        if (!isset($config['storageLogFile'])) {
+            throw new \RuntimeException("storageLogFile not exists in config");
+        }
         foreach($config as $k => $v) {
             if (property_exists($this, $k)) {
                 $this->{$k} = $v;
             }
         }
-        $this->api = new CurlExtDebug($config['baseUrl']);
+        $this->api = new CurlExtDebug($config['baseUrl'], $config['storageLogFile']);
         $this->api->isDebugging = $this->isDebugging();
     }
 
@@ -56,8 +59,15 @@ class ClientAuthApiFrontAppSdk
         return $this->privateKey;
     }
 
-    protected function generateUserToken(string $content): string
+    protected function generateUserToken($content): string
     {
+        if (is_array($content)) {
+            if (empty($content)) {
+                $content = '';
+            } else {
+                $content = json_encode($content);
+            }
+        }
         return JwtAuthUserTokenHelper::toJwt($this->userId, $this->privateKey, $content);
     }
 
@@ -74,7 +84,7 @@ class ClientAuthApiFrontAppSdk
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                self::USER_TOKEN_KEY_NAME => $this->generateUserToken(json_encode($requestParams, true)),
+                self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestParams),
             ]
         );
 
