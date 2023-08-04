@@ -19,8 +19,8 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
         string $userId,
         string $privateKey,
         string $hashBody,
-        int $expireSeconds = 3600,
-        int $skewSeconds = 60,
+        int $expireSeconds = 30,
+        int $skewSeconds = 30,
     ): string
     {
         $now = time();
