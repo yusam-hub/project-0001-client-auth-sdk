@@ -16,16 +16,16 @@ class ClientAuthApiFrontAppSdk
     public function __construct(array $config = [])
     {
         if (!isset($config['baseUrl'])) {
-            throw new \RuntimeException(sprintf("baseUrl not exists in config"));
+            throw new \RuntimeException("baseUrl not exists in config");
         }
         if (!isset($config['isDebugging'])) {
-            throw new \RuntimeException(sprintf("isDebugging not exists in config"));
+            throw new \RuntimeException("isDebugging not exists in config");
         }
         if (!isset($config['userId'])) {
-            throw new \RuntimeException(sprintf("userId not exists in config"));
+            throw new \RuntimeException("userId not exists in config");
         }
         if (!isset($config['privateKey'])) {
-            throw new \RuntimeException(sprintf("privateKey not exists in config"));
+            throw new \RuntimeException("privateKey not exists in config");
         }
         foreach($config as $k => $v) {
             if (property_exists($this, $k)) {
