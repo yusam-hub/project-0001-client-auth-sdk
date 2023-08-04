@@ -59,16 +59,20 @@ class ClientAuthApiFrontAppSdk
         return $this->privateKey;
     }
 
-    protected function generateUserToken($content): string
+    protected function generateUserToken($method, $content): string
     {
         if (is_array($content)) {
             if (empty($content)) {
                 $content = '';
             } else {
-                $content = json_encode($content);
+                if ($method === 'GET') {
+                    $content = http_build_query($content);
+                }  else {
+                    $content = json_encode($content);
+                }
             }
         }
-        return JwtAuthUserTokenHelper::toJwt($this->userId, $this->privateKey, $content);
+        return JwtAuthUserTokenHelper::toJwt($this->userId, $this->privateKey, md5($content));
     }
 
     public function getAppList(): ?array
