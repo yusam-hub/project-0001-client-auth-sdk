@@ -27,7 +27,7 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
 
         $userTokenPayload = new UserTokenPayload();
         $userTokenPayload->uid = $userId;
-        $userTokenPayload->now = $now;
+        $userTokenPayload->iat = ($now - $skewSeconds);
         $userTokenPayload->exp = ($now + $expireSeconds);
         $userTokenPayload->hb = $hashBody;
 
