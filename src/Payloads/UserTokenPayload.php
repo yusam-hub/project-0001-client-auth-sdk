@@ -5,7 +5,7 @@ namespace YusamHub\Project0001ClientAuthSdk\Payloads;
 class UserTokenPayload
 {
     public ?int $uid = null;
-    public ?int $iat = null;
+    public ?int $now = null;
     public ?int $exp = null;
     public ?string $hb = null;
     public function __construct(array $properties = [])
