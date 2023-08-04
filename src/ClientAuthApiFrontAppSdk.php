@@ -59,7 +59,12 @@ class ClientAuthApiFrontAppSdk
         return $this->privateKey;
     }
 
-    protected function generateUserToken($method, $content): string
+    /**
+     * @param string $method
+     * @param array|string $content
+     * @return string
+     */
+    protected function generateUserToken(string $method, array|string $content): string
     {
         if (is_array($content)) {
             if (empty($content)) {
@@ -71,19 +76,24 @@ class ClientAuthApiFrontAppSdk
                     $content = json_encode($content);
                 }
             }
+        } elseif (!is_string($content)) {
+            throw new \RuntimeException("Invalid content, require string");
         }
         return JwtAuthUserTokenHelper::toJwt($this->userId, $this->privateKey, md5($content));
     }
 
-    public function getAppList(): ?array
+    /**
+     * @param string $requestMethod
+     * @param string $requestUri
+     * @param array $requestParams
+     * @return array|null
+     */
+    protected function doAppRequest(
+        string $requestMethod,
+        string $requestUri,
+        array $requestParams,
+    ): ?array
     {
-        $requestMethod = $this->api::METHOD_GET;
-
-        $requestUri = "/api/front/app/list";
-
-        $requestParams = [
-        ];
-
         $headers = [
             'Accept' => $this->api::CONTENT_TYPE_APPLICATION_JSON,
             self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
@@ -100,5 +110,30 @@ class ClientAuthApiFrontAppSdk
         }
 
         return null;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getAppList(): ?array
+    {
+        return $this->doAppRequest(
+            $this->api::METHOD_GET,
+            '/api/front/app/list',
+            []
+        );
+    }
+
+    /**
+     * @param string $title
+     * @return array|null
+     */
+    public function postAppAdd(string $title): ?array
+    {
+        return $this->doAppRequest(
+            $this->api::METHOD_POST,
+            '/api/front/app/add',
+            get_defined_vars()
+        );
     }
 }

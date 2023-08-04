@@ -28,7 +28,14 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(true);
     }
 
-    public function testFrontApp()
+    public function testPostAppAdd()
+    {
+        $clientAuthApiFrontAppSdk = new ClientAuthApiFrontAppSdk(Config::getConfig('testing'));
+        $appAdd = $clientAuthApiFrontAppSdk->postAppAdd('My test app');
+        $this->assertTrue(is_array($appAdd));
+    }
+
+    public function testGetAppList()
     {
         $clientAuthApiFrontAppSdk = new ClientAuthApiFrontAppSdk(Config::getConfig('testing'));
         $appList = $clientAuthApiFrontAppSdk->getAppList();
