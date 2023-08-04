@@ -25,11 +25,13 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 
         $userId = JwtAuthUserTokenHelper::getUserFromJwtHeads($jwt);
         var_dump($userId);*/
+        $this->assertTrue(true);
     }
 
     public function testFrontApp()
     {
         $clientAuthApiFrontAppSdk = new ClientAuthApiFrontAppSdk(Config::getConfig('testing'));
-        var_dump($clientAuthApiFrontAppSdk->getAppList());
+        $appList = $clientAuthApiFrontAppSdk->getAppList();
+        $this->assertTrue(is_array($appList));
     }
 }

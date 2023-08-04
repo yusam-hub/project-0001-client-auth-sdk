@@ -84,13 +84,16 @@ class ClientAuthApiFrontAppSdk
         $requestParams = [
         ];
 
-        $response = $this->api->request($requestMethod, $requestUri, $requestParams,
-            [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
-            ]
-        );
+        $headers = [
+            'Accept' => $this->api::CONTENT_TYPE_APPLICATION_JSON,
+            self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
+        ];
+
+        if ($requestMethod !== $this->api::METHOD_GET) {
+            $headers[$this->api::HEADER_CONTENT_TYPE] = $this->api::CONTENT_TYPE_APPLICATION_JSON;
+        }
+
+        $response = $this->api->request($requestMethod, $requestUri, $requestParams, $headers);
 
         if ($response->isStatusCode(200) && $response->isContentTypeJson()) {
             return $response->toArray();
