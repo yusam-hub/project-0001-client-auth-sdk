@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tests;
 
-use YusamHub\Project0001ClientAuthSdk\JwtAuthHelper;
+use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,24 +11,19 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
         $publicKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-public-key.pem');
 
-        $jwt = JwtAuthHelper::toJwt(
-            1,
-            1,
-            'test-device',
-            $privateKey,
-            [
-                'testPayloadKey' => 'testPayloadValue'
-            ],
-        [
-            'testHeaderKey' => 'testHeaderValue'
-        ]);
+        $userId = 1;
+        $jwt = JwtAuthUserTokenHelper::toJwt(
+            $userId,
+            md5('test'),
+            $privateKey
+        );
         var_dump($jwt);
 
-        $payload = JwtAuthHelper::fromJwtAsPayload($jwt, $publicKey);
-        var_dump($payload);
+        $payload = JwtAuthUserTokenHelper::fromJwtAsPayload($jwt, $publicKey);
+        var_dump((array) $payload);
 
-        $headers = JwtAuthHelper::fromJwtAsHeaders($jwt);
-        var_dump($headers);
+        $userId = JwtAuthUserTokenHelper::getUserFromJwtHeads($jwt);
+        var_dump($userId);
 
     }
 }
