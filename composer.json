@@ -12,7 +12,6 @@
     "require": {
         "php": "^8.1",
         "firebase/php-jwt": "^6.0",
-        "yusam-hub/php-compatibility": "dev-master",
         "yusam-hub/curl-ext": "dev-master"
     },
     "require-dev": {
