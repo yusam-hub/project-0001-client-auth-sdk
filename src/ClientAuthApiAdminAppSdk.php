@@ -5,7 +5,7 @@ namespace YusamHub\Project0001ClientAuthSdk;
 use YusamHub\CurlExt\CurlExtDebug;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
-class ClientAuthApiFrontAppSdk
+class ClientAuthApiAdminAppSdk
 {
     const USER_TOKEN_KEY_NAME = 'X-User-Token';
     protected CurlExtDebug $api;
@@ -119,7 +119,7 @@ class ClientAuthApiFrontAppSdk
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
-            '/api/front/app/list',
+            '/api/admin/app/list',
             []
         );
     }
@@ -132,7 +132,7 @@ class ClientAuthApiFrontAppSdk
     {
         return $this->doAppRequest(
             $this->api::METHOD_POST,
-            '/api/front/app/add',
+            '/api/admin/app/add',
             get_defined_vars()
         );
     }
@@ -145,7 +145,7 @@ class ClientAuthApiFrontAppSdk
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
-            strtr('/api/front/app/id/{appId}',[
+            strtr('/api/admin/app/id/{appId}',[
                 '{appId}' => $appId
             ]),
             []
@@ -161,7 +161,7 @@ class ClientAuthApiFrontAppSdk
     {
         return $this->doAppRequest(
             $this->api::METHOD_PUT,
-            strtr('/api/front/app/id/{appId}/change-title',[
+            strtr('/api/admin/app/id/{appId}/change-title',[
                 '{appId}' => $appId
             ]),
             [
@@ -178,7 +178,7 @@ class ClientAuthApiFrontAppSdk
     {
         return $this->doAppRequest(
             $this->api::METHOD_PUT,
-            strtr('/api/front/app/id/{appId}/change-keys',[
+            strtr('/api/admin/app/id/{appId}/change-keys',[
                 '{appId}' => $appId
             ]),
             [
