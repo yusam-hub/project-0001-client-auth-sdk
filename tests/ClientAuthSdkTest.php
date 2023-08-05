@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tests;
 
-use YusamHub\Project0001ClientAuthSdk\ClientAuthApiAdminAppSdk;
+use YusamHub\Project0001ClientAuthSdk\ClientAuthApiAdminSdk;
 use YusamHub\Project0001ClientAuthSdk\ClientAuthApiUserAppSdk;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 

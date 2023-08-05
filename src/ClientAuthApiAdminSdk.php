@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-class ClientAuthApiAdminAppSdk extends BaseClientAuthApiAppSdk
+class ClientAuthApiAdminSdk extends BaseClientAuthApiAppSdk
 {
     /**
      * @return array|null
