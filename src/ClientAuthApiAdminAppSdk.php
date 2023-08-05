@@ -7,7 +7,7 @@ use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthApiAdminAppSdk
 {
-    const USER_TOKEN_KEY_NAME = 'X-User-Token';
+    const TOKEN_KEY_NAME = 'X-Token';
     protected CurlExtDebug $api;
     protected bool $isDebugging;
     protected int $userId;
@@ -96,7 +96,7 @@ class ClientAuthApiAdminAppSdk
     {
         $headers = [
             'Accept' => $this->api::CONTENT_TYPE_APPLICATION_JSON,
-            self::USER_TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
+            self::TOKEN_KEY_NAME => $this->generateUserToken($requestMethod, $requestParams),
         ];
 
         if ($requestMethod !== $this->api::METHOD_GET) {
