@@ -169,4 +169,20 @@ class ClientAuthApiFrontAppSdk
             ]
         );
     }
+
+    /**
+     * @param int $appId
+     * @return array|null
+     */
+    public function putAppIdChangeKeys(int $appId): ?array
+    {
+        return $this->doAppRequest(
+            $this->api::METHOD_PUT,
+            strtr('/api/front/app/id/{appId}/change-keys',[
+                '{appId}' => $appId
+            ]),
+            [
+            ]
+        );
+    }
 }
