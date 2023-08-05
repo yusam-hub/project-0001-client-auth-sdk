@@ -5,13 +5,16 @@ namespace YusamHub\Project0001ClientAuthSdk;
 class ClientAuthApiUserAppSdk extends BaseClientAuthApiAppSdk
 {
     /**
+     * @param int $appId
      * @return array|null
      */
-    public function getAppKeyList(): ?array
+    public function getAppIdKeyList(int $appId): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
-            '/api/user/app/key/list',
+            strtr('/api/user/app/id/{appId}/key-list', [
+                '{appId}' => $appId
+            ]),
             [],
             true
         );
