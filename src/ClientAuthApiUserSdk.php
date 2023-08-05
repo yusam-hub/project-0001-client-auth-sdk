@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-class ClientAuthApiUserSdk extends BaseClientAuthApiAppSdk
+class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
 {
     /**
      * @param string $emailOrMobile

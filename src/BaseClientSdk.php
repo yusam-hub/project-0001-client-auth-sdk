@@ -5,12 +5,12 @@ namespace YusamHub\Project0001ClientAuthSdk;
 use YusamHub\CurlExt\CurlExtDebug;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
-abstract class BaseClientAuthApiAppSdk
+abstract class BaseClientSdk
 {
     const TOKEN_KEY_NAME = 'X-Token';
     protected CurlExtDebug $api;
     protected bool $isDebugging;
-    protected int $userId;
+    protected int $identifierId;
     protected string $privateKey;
 
     public function __construct(array $config = [])
@@ -21,8 +21,8 @@ abstract class BaseClientAuthApiAppSdk
         if (!isset($config['isDebugging'])) {
             throw new \RuntimeException("isDebugging not exists in config");
         }
-        if (!isset($config['userId'])) {
-            throw new \RuntimeException("userId not exists in config");
+        if (!isset($config['identifierId'])) {
+            throw new \RuntimeException("identifierId not exists in config");
         }
         if (!isset($config['privateKey'])) {
             throw new \RuntimeException("privateKey not exists in config");
@@ -49,9 +49,9 @@ abstract class BaseClientAuthApiAppSdk
         return $this->isDebugging;
     }
 
-    public function getUserId(): int
+    public function getIdentifierId(): int
     {
-        return $this->userId;
+        return $this->identifierId;
     }
 
     public function getPrivateKey(): string
@@ -79,7 +79,7 @@ abstract class BaseClientAuthApiAppSdk
         } elseif (!is_string($content)) {
             throw new \RuntimeException("Invalid content, require string");
         }
-        return JwtAuthUserTokenHelper::toJwt($this->userId, $this->privateKey, md5($content));
+        return $content;
     }
 
     /**
