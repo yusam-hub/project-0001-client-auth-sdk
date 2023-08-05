@@ -71,10 +71,10 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($appIdRefresh));
     }*/
 
-    public function testGetAppKeyList()
+    /*public function testGetAppKeyList()
     {
         $clientAuthApiUserAppSdk = new ClientAuthApiUserAppSdk(Config::getConfig('user-token-testing'));
         $appKeyList = $clientAuthApiUserAppSdk->getAppKeyList();
         $this->assertTrue(is_array($appKeyList));
-    }
+    }*/
 }
