@@ -3,6 +3,7 @@
 namespace YusamHub\Project0001ClientAuthSdk\Tests;
 
 use YusamHub\Project0001ClientAuthSdk\ClientAuthApiAdminAppSdk;
+use YusamHub\Project0001ClientAuthSdk\ClientAuthApiUserAppSdk;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
@@ -30,36 +31,50 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 
     /*public function testPostAppAdd()
     {
-        $clientAuthApiFrontAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('testing'));
-        $appAdd = $clientAuthApiFrontAppSdk->postAppAdd('My test app');
+        $clientAuthApiAdminAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('user-token-testing'));
+        $appAdd = $clientAuthApiAdminAppSdk->postAppAdd('My test app');
         $this->assertTrue(is_array($appAdd));
     }*/
 
     /*public function testGetAppList()
     {
-        $clientAuthApiFrontAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('testing'));
-        $appList = $clientAuthApiFrontAppSdk->getAppList();
+        $clientAuthApiAdminAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('user-token-testing'));
+        $appList = $clientAuthApiAdminAppSdk->getAppList();
         $this->assertTrue(is_array($appList));
     }*/
 
     /*public function testGetAppId()
     {
-        $clientAuthApiFrontAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('testing'));
-        $app = $clientAuthApiFrontAppSdk->getAppId(2);
+        $clientAuthApiAdminAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('user-token-testing'));
+        $app = $clientAuthApiAdminAppSdk->getAppId(2);
         $this->assertTrue(is_array($app));
     }*/
 
     /*public function testPutAppIdChangeTitle()
     {
-        $clientAuthApiFrontAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('testing'));
-        $app = $clientAuthApiFrontAppSdk->putAppIdChangeTitle(2, 'My test changed title');
+        $clientAuthApiAdminAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('user-token-testing'));
+        $app = $clientAuthApiAdminAppSdk->putAppIdChangeTitle(2, 'My test changed title');
         $this->assertTrue(is_array($app));
     }*/
 
     /*public function testPutAppIdChangeKeys()
     {
-        $clientAuthApiFrontAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('testing'));
-        $app = $clientAuthApiFrontAppSdk->putAppIdChangeKeys(2);
+        $clientAuthApiAdminAppSdk = new ClientAuthApiAdminAppSdk(Config::getConfig('user-token-testing'));
+        $app = $clientAuthApiAdminAppSdk->putAppIdChangeKeys(2);
         $this->assertTrue(is_array($app));
     }*/
+
+    /*public function testPostAppIdRefresh()
+    {
+        $clientAuthApiUserAppSdk = new ClientAuthApiUserAppSdk(Config::getConfig('user-token-testing'));
+        $appIdRefresh = $clientAuthApiUserAppSdk->postAppIdRefresh(2,'12345678901234567890123456789012');
+        $this->assertTrue(is_array($appIdRefresh));
+    }*/
+
+    public function testGetAppKeyList()
+    {
+        $clientAuthApiUserAppSdk = new ClientAuthApiUserAppSdk(Config::getConfig('user-token-testing'));
+        $appKeyList = $clientAuthApiUserAppSdk->getAppKeyList();
+        $this->assertTrue(is_array($appKeyList));
+    }
 }
