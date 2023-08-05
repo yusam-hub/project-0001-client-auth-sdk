@@ -136,4 +136,37 @@ class ClientAuthApiFrontAppSdk
             get_defined_vars()
         );
     }
+
+    /**
+     * @param int $appId
+     * @return array|null
+     */
+    public function getAppId(int $appId): ?array
+    {
+        return $this->doAppRequest(
+            $this->api::METHOD_GET,
+            strtr('/api/front/app/id/{appId}',[
+                '{appId}' => $appId
+            ]),
+            []
+        );
+    }
+
+    /**
+     * @param int $appId
+     * @param string $title
+     * @return array|null
+     */
+    public function putAppIdChangeTitle(int $appId, string $title): ?array
+    {
+        return $this->doAppRequest(
+            $this->api::METHOD_PUT,
+            strtr('/api/front/app/id/{appId}/change-title',[
+                '{appId}' => $appId
+            ]),
+            [
+                'title' => $title
+            ]
+        );
+    }
 }
