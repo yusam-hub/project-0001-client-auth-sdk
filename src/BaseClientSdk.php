@@ -67,14 +67,10 @@ abstract class BaseClientSdk
     protected function generateUserToken(string $method, array|string $content): string
     {
         if (is_array($content)) {
-            if (empty($content)) {
-                $content = '';
+            if ($method === $this->api::METHOD_GET) {
+                $content = http_build_query($content);
             } else {
-                if ($method === $this->api::METHOD_GET) {
-                    $content = http_build_query($content);
-                } else {
-                    $content = json_encode($content);
-                }
+                $content = json_encode($content);
             }
         } elseif (!is_string($content)) {
             throw new \RuntimeException("Invalid content, require string");

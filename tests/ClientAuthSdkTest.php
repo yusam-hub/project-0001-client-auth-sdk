@@ -58,12 +58,12 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($app));
     }*/
 
-    public function testPutAppIdChangeKeys()
+    /*public function testPutAppIdChangeKeys()
     {
         $clientAuthApiAdminAppSdk = new ClientAuthApiAdminSdk(Config::getConfig('user-sdk'));
         $app = $clientAuthApiAdminAppSdk->putAppIdChangeKeys(2);
         $this->assertTrue(is_array($app));
-    }
+    }*/
 
     /*public function testPostAppIdRefresh()
     {
@@ -79,7 +79,7 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($appKeyList));
     }*/
 
-    /*public function testGetAppUserKey()
+    public function testGetAppUserKey()
     {
         $clientAuthApiAppSdk = new ClientAuthApiAppSdk(Config::getConfig('app-sdk'));
         $userKey = $clientAuthApiAppSdk->getUserKey(
@@ -87,5 +87,5 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
             '12345678901234567890123456789012'
         );
         $this->assertTrue(is_array($userKey));
-    }*/
+    }
 }
