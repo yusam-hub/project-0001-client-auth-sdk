@@ -4,10 +4,6 @@
     "type": "package",
     "minimum-stability": "stable",
     "repositories": {
-        "yusam-hub/php-compatibility": {
-            "type": "git",
-            "url": "https://github.com/yusam-hub/php-compatibility.git"
-        },
         "yusam-hub/curl-ext": {
             "type": "git",
             "url": "https://github.com/yusam-hub/curl-ext"
