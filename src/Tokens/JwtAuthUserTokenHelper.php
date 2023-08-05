@@ -8,7 +8,7 @@ use YusamHub\Project0001ClientAuthSdk\Payloads\UserTokenPayload;
 class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
 {
     /**
-     * @param string $userId
+     * @param int $userId
      * @param string $privateKey
      * @param string $hashBody
      * @param int $expireSeconds
@@ -16,7 +16,7 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
      * @return string
      */
     public static function toJwt(
-        string $userId,
+        int $userId,
         string $privateKey,
         string $hashBody,
         int $expireSeconds = 30,
@@ -35,9 +35,9 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
             $userTokenPayload,
             $privateKey,
             'RS256',
-            [
+            (array) (new UserTokenHead([
                 'uid' => $userTokenPayload->uid,
-            ]
+            ]))
         );
     }
 
