@@ -63,7 +63,7 @@ abstract class BaseClientSdk
      * @param array|string $content
      * @return string
      */
-    protected function generateUserToken(string $method, array|string $content): string
+    protected function generateToken(string $method, array|string $content): string
     {
         if (is_array($content)) {
             if ($method === $this->api::METHOD_GET) {
@@ -96,7 +96,7 @@ abstract class BaseClientSdk
         ];
 
         if ($authorize) {
-            $headers[self::TOKEN_KEY_NAME] = $this->generateUserToken($requestMethod, $requestParams);
+            $headers[self::TOKEN_KEY_NAME] = $this->generateToken($requestMethod, $requestParams);
         }
 
         if ($requestMethod !== $this->api::METHOD_GET) {

@@ -11,8 +11,8 @@ abstract class BaseClientUserTokenSdk extends BaseClientSdk
      * @param array|string $content
      * @return string
      */
-    protected function generateUserToken(string $method, array|string $content): string
+    protected function generateToken(string $method, array|string $content): string
     {
-        return JwtAuthUserTokenHelper::toJwt($this->identifierId, $this->privateKey, md5(parent::generateUserToken($method, $content)));
+        return JwtAuthUserTokenHelper::toJwt($this->identifierId, $this->privateKey, md5(parent::generateToken($method, $content)));
     }
 }
