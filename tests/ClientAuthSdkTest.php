@@ -65,7 +65,7 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($app));
     }*/
 
-    public function testPostAppIdRefresh()
+    /*public function testPostAppIdRefresh()
     {
         $clientAuthApiUserAppSdk = new ClientAuthApiUserSdk(Config::getConfig('user-sdk'));
         $appIdRefresh = $clientAuthApiUserAppSdk->postAppIdRefresh(2,'12345678901234567890123456789012');
@@ -77,9 +77,9 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
             $appIdRefresh['data']['keyHash'],
             $appIdRefresh['data']['privateKey'],
         );
-
+        $this->assertTrue(is_array($accessToken));
         var_dump($accessToken);
-    }
+    }*/
 
     /*public function testGetAppKeyList()
     {
@@ -88,14 +88,11 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($appKeyList));
     }*/
 
-    /*public function testGetAppUserKey()
+    public function testGetAppUserKey()
     {
         $clientAuthApiAppSdk = new ClientAuthApiAppSdk(Config::getConfig('app-sdk'));
-        $userKey = $clientAuthApiAppSdk->getUserKey(
-            2,
-            '12345678901234567890123456789012'
-        );
-        $this->assertTrue(is_array($userKey));
-    }*/
+        $accessToken = $clientAuthApiAppSdk->getAccessToken('0f37370a3a6fb7140d170b797d81fda2');
+        $this->assertTrue(is_array($accessToken));
+    }
 
 }
