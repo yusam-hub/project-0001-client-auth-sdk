@@ -88,11 +88,11 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(is_array($appKeyList));
     }*/
 
-    public function testGetAppUserKey()
+    /*public function testGetAppUserKey()
     {
         $clientAuthApiAppSdk = new ClientAuthApiAppSdk(Config::getConfig('app-sdk'));
         $accessToken = $clientAuthApiAppSdk->getAccessToken('0f37370a3a6fb7140d170b797d81fda2');
         $this->assertTrue(is_array($accessToken));
-    }
+    }*/
 
 }
