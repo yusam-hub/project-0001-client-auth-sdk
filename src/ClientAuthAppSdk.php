@@ -2,13 +2,13 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-class ClientAuthApiAppSdk extends BaseClientAppTokenSdk
+class ClientAuthAppSdk extends BaseClientAppTokenSdk
 {
     /**
      * @param string $accessToken
      * @return array|null
      */
-    public function getAccessToken(string $accessToken): ?array
+    public function getApiAppAccessToken(string $accessToken): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,

@@ -2,12 +2,12 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-class ClientAuthApiAdminSdk extends BaseClientUserTokenSdk
+class ClientAuthAdminSdk extends BaseClientUserTokenSdk
 {
     /**
      * @return array|null
      */
-    public function getAppList(): ?array
+    public function getApiAdminAppList(): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
@@ -21,7 +21,7 @@ class ClientAuthApiAdminSdk extends BaseClientUserTokenSdk
      * @param string $title
      * @return array|null
      */
-    public function postAppAdd(string $title): ?array
+    public function postApiAdminAppAdd(string $title): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_POST,
@@ -35,7 +35,7 @@ class ClientAuthApiAdminSdk extends BaseClientUserTokenSdk
      * @param int $appId
      * @return array|null
      */
-    public function getAppId(int $appId): ?array
+    public function getApiAdminAppId(int $appId): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
@@ -52,7 +52,7 @@ class ClientAuthApiAdminSdk extends BaseClientUserTokenSdk
      * @param string $title
      * @return array|null
      */
-    public function putAppIdChangeTitle(int $appId, string $title): ?array
+    public function putApiAdminAppIdChangeTitle(int $appId, string $title): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_PUT,
@@ -70,7 +70,7 @@ class ClientAuthApiAdminSdk extends BaseClientUserTokenSdk
      * @param int $appId
      * @return array|null
      */
-    public function putAppIdChangeKeys(int $appId): ?array
+    public function putApiAdminAppIdChangeKeys(int $appId): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_PUT,

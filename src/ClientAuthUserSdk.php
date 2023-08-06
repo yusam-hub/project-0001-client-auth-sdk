@@ -3,15 +3,14 @@
 namespace YusamHub\Project0001ClientAuthSdk;
 
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAccessTokenHelper;
-use YusamHub\Project0001ClientDemoSdk\Tokens\JwtDemoTokenHelper;
 
-class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
+class ClientAuthUserSdk extends BaseClientUserTokenSdk
 {
     /**
      * @param string $emailOrMobile
      * @return array|null
      */
-    public function postAccountInitRegistration(string $emailOrMobile): ?array
+    public function postApiUserAccountInitRegistration(string $emailOrMobile): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_POST,
@@ -26,7 +25,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param string $otp
      * @return array|null
      */
-    public function postAccountConfirmRegistration(
+    public function postApiUserAccountConfirmRegistration(
         string $emailOrMobile,
         string $hash,
         string $otp
@@ -43,7 +42,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param string $emailOrMobile
      * @return array|null
      */
-    public function postAccountInitRestoreRegistration(string $emailOrMobile): ?array
+    public function postApiUserAccountInitRestoreRegistration(string $emailOrMobile): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_POST,
@@ -58,7 +57,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param string $otp
      * @return array|null
      */
-    public function postAccountConfirmRestoreRegistration(
+    public function postApiUserAccountConfirmRestoreRegistration(
         string $emailOrMobile,
         string $hash,
         string $otp
@@ -75,7 +74,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param int $appId
      * @return array|null
      */
-    public function getAppIdKeyList(int $appId): ?array
+    public function getApiUserAppIdKeyList(int $appId): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_GET,
@@ -92,7 +91,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param string $deviceUuid
      * @return array|null
      */
-    public function postAppIdRefresh(int $appId, string $deviceUuid): ?array
+    public function postApiUserAppIdKeyRefresh(int $appId, string $deviceUuid): ?array
     {
         return $this->doAppRequest(
             $this->api::METHOD_POST,
@@ -113,7 +112,7 @@ class ClientAuthApiUserSdk extends BaseClientUserTokenSdk
      * @param string $privateKey
      * @return array|null
      */
-    public function postAppAccessToken(
+    public function postApiUserAppAccessToken(
         int $appId,
         string $deviceUuid,
         string $publicKeyHash,
