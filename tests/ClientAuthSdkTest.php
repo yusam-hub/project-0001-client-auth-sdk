@@ -9,70 +9,49 @@ use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 {
-    public function testDefault()
-    {
-        /*$privateKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-private-key.pem');
-        $publicKey = file_get_contents(__DIR__ . '/../ssl/test-openssl-public-key.pem');
-
-        $userId = 1;
-        $jwt = JwtAuthUserTokenHelper::toJwt(
-            $userId,
-            md5('test'),
-            $privateKey
-        );
-        var_dump($jwt);
-
-        $payload = JwtAuthUserTokenHelper::fromJwtAsPayload($jwt, $publicKey);
-        var_dump((array) $payload);
-
-        $userId = JwtAuthUserTokenHelper::getUserFromJwtHeads($jwt);
-        var_dump($userId);*/
-        $this->assertTrue(true);
-    }
-
     /*public function testPostAppAdd()
     {
-        $clientAuthAdminAppSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
-        $appAdd = $clientAuthAdminAppSdk->postAppAdd('My test app');
+        $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
+        $appAdd = $clientAuthAdminSdk->postApiAdminAppAdd('Testing');
         $this->assertTrue(is_array($appAdd));
     }*/
 
     /*public function testGetAppList()
     {
-        $clientAuthAdminAppSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
-        $appList = $clientAuthAdminAppSdk->getAppList();
+        $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
+        $appList = $clientAuthAdminSdk->getApiAdminAppList();
         $this->assertTrue(is_array($appList));
     }*/
 
     /*public function testGetAppId()
     {
-        $clientAuthAdminAppSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
-        $app = $clientAuthAdminAppSdk->getAppId(2);
+        $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
+        $app = $clientAuthAdminSdk->getApiAdminAppId(1);
         $this->assertTrue(is_array($app));
     }*/
 
     /*public function testPutAppIdChangeTitle()
     {
-        $clientAuthAdminAppSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
-        $app = $clientAuthAdminAppSdk->putAppIdChangeTitle(2, 'My test changed title');
+        $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
+        $app = $clientAuthAdminSdk->putApiAdminAppIdChangeTitle(1, 'Testing');
         $this->assertTrue(is_array($app));
     }*/
 
     /*public function testPutAppIdChangeKeys()
     {
-        $clientAuthAdminAppSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
-        $app = $clientAuthAdminAppSdk->putAppIdChangeKeys(2);
+        $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));
+        $app = $clientAuthAdminSdk->putApiAdminAppIdChangeKeys(1);
         $this->assertTrue(is_array($app));
     }*/
 
     /*public function testPostAppIdRefresh()
     {
-        $clientAuthUserAppSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
-        $appIdRefresh = $clientAuthUserAppSdk->postAppIdRefresh(2,'12345678901234567890123456789012');
+        $clientAuthUserSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
+        $appIdRefresh = $clientAuthUserSdk->postApiUserAppIdKeyRefresh(1,'12345678901234567890123456789012');
         $this->assertTrue(is_array($appIdRefresh));
 
-        $accessToken = $clientAuthUserAppSdk->postAppAccessToken(
-            2,
+        $accessToken = $clientAuthUserSdk->postApiUserAppAccessToken(
+            1,
             '12345678901234567890123456789012',
             $appIdRefresh['data']['keyHash'],
             $appIdRefresh['data']['privateKey'],
@@ -83,15 +62,15 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 
     /*public function testGetAppKeyList()
     {
-        $clientAuthUserAppSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
-        $appKeyList = $clientAuthUserAppSdk->getAppKeyList();
+        $clientAuthUserSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
+        $appKeyList = $clientAuthUserSdk->getApiUserAppIdKeyList(1);
         $this->assertTrue(is_array($appKeyList));
     }*/
 
     /*public function testGetAppUserKey()
     {
         $clientAuthAppSdk = new ClientAuthAppSdk(Config::getConfig('app-sdk'));
-        $accessToken = $clientAuthAppSdk->getAccessToken('0f37370a3a6fb7140d170b797d81fda2');
+        $accessToken = $clientAuthAppSdk->getApiAppAccessToken('7861e9486a36128cc1382393a6ff9175');
         $this->assertTrue(is_array($accessToken));
     }*/
 
