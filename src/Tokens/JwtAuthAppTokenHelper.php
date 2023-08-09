@@ -23,7 +23,7 @@ class JwtAuthAppTokenHelper extends JwtBaseTokenHelper
         int $skewSeconds = 30,
     ): string
     {
-        $now = time();//todo: convert to UTC
+        $now = curl_ext_time_utc();
 
         $appTokenPayload = new AppTokenPayload();
         $appTokenPayload->aid = $appId;
