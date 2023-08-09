@@ -21,7 +21,6 @@ class JwtBaseTokenHelper
         array $head = []
     ): string
     {
-        $now = time();
         return JWT::encode(
             (array) $payload,
             $privateKey,

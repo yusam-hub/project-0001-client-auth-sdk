@@ -23,7 +23,7 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
         int $skewSeconds = 30,
     ): string
     {
-        $now = time();
+        $now = time();//todo: convert to UTC
 
         $userTokenPayload = new UserTokenPayload();
         $userTokenPayload->uid = $userId;

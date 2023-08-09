@@ -27,7 +27,7 @@ class JwtAccessTokenHelper extends JwtBaseTokenHelper
         int $skewSeconds = 60,
     ): string
     {
-        $now = time();
+        $now = time();//todo: convert to UTC
 
         $accessTokenPayload = new AccessTokenPayload();
         $accessTokenPayload->aid = $appId;
