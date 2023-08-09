@@ -12,7 +12,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
      */
     public function postApiUserAccountInitRegistration(string $emailOrMobile): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/user/account/init-registration',
             get_defined_vars()
@@ -31,7 +31,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
         string $otp
     ): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/user/account/confirm-registration',
             get_defined_vars()
@@ -44,7 +44,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
      */
     public function postApiUserAccountInitRestoreRegistration(string $emailOrMobile): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/user/account/init-restore-registration',
             get_defined_vars()
@@ -63,7 +63,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
         string $otp
     ): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/user/account/confirm-restore-registration',
             get_defined_vars()
@@ -76,7 +76,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
      */
     public function getApiUserAppIdKeyList(int $appId): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_GET,
             strtr('/api/user/app/id/{appId}/key-list', [
                 '{appId}' => $appId
@@ -93,7 +93,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
      */
     public function postApiUserAppIdKeyRefresh(int $appId, string $deviceUuid): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             strtr('/api/user/app/id/{appId}/key-refresh', [
                 '{appId}' => $appId
@@ -119,7 +119,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
         string $privateKey
     ): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/user/app/access-token',
             [

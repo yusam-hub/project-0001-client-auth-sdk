@@ -84,7 +84,7 @@ abstract class BaseClientSdk
      * @param bool $authorize
      * @return array|null
      */
-    protected function doAppRequest(
+    protected function doBaseRequest(
         string $requestMethod,
         string $requestUri,
         array $requestParams,

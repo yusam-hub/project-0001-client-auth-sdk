@@ -10,7 +10,7 @@ class ClientAuthAppSdk extends BaseClientAppTokenSdk
      */
     public function getApiAppAccessToken(string $accessToken): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_GET,
             '/api/app/access-token',
             get_defined_vars(),

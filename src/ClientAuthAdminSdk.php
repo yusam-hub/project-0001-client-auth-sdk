@@ -9,7 +9,7 @@ class ClientAuthAdminSdk extends BaseClientUserTokenSdk
      */
     public function getApiAdminAppList(): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_GET,
             '/api/admin/app/list',
             [],
@@ -23,7 +23,7 @@ class ClientAuthAdminSdk extends BaseClientUserTokenSdk
      */
     public function postApiAdminAppAdd(string $title): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_POST,
             '/api/admin/app/add',
             get_defined_vars(),
@@ -37,7 +37,7 @@ class ClientAuthAdminSdk extends BaseClientUserTokenSdk
      */
     public function getApiAdminAppId(int $appId): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_GET,
             strtr('/api/admin/app/id/{appId}',[
                 '{appId}' => $appId
@@ -54,7 +54,7 @@ class ClientAuthAdminSdk extends BaseClientUserTokenSdk
      */
     public function putApiAdminAppIdChangeTitle(int $appId, string $title): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_PUT,
             strtr('/api/admin/app/id/{appId}/change-title',[
                 '{appId}' => $appId
@@ -72,7 +72,7 @@ class ClientAuthAdminSdk extends BaseClientUserTokenSdk
      */
     public function putApiAdminAppIdChangeKeys(int $appId): ?array
     {
-        return $this->doAppRequest(
+        return $this->doBaseRequest(
             $this->api::METHOD_PUT,
             strtr('/api/admin/app/id/{appId}/change-keys',[
                 '{appId}' => $appId
