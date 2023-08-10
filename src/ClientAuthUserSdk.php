@@ -39,38 +39,6 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
     }
 
     /**
-     * @param string $emailOrMobile
-     * @return array|null
-     */
-    public function postApiUserAccountInitRestoreRegistration(string $emailOrMobile): ?array
-    {
-        return $this->doBaseRequest(
-            $this->api::METHOD_POST,
-            '/api/user/account/init-restore-registration',
-            get_defined_vars()
-        );
-    }
-
-    /**
-     * @param string $emailOrMobile
-     * @param string $hash
-     * @param string $otp
-     * @return array|null
-     */
-    public function postApiUserAccountConfirmRestoreRegistration(
-        string $emailOrMobile,
-        string $hash,
-        string $otp
-    ): ?array
-    {
-        return $this->doBaseRequest(
-            $this->api::METHOD_POST,
-            '/api/user/account/confirm-restore-registration',
-            get_defined_vars()
-        );
-    }
-
-    /**
      * @param int $appId
      * @return array|null
      */
