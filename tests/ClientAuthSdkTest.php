@@ -9,6 +9,17 @@ use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthUserTokenHelper;
 
 class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
 {
+    /*public function testJWT()
+    {
+        $config = Config::getConfig('user-sdk');
+        $jwt = JwtAuthUserTokenHelper::toJwt($config['identifierId'], $config['privateKey'], md5("test"));
+        $this->assertTrue($jwt != '');
+        $userId = JwtAuthUserTokenHelper::getUserFromJwtHeads($jwt);
+        $this->assertTrue($userId === intval($config['identifierId']));
+        $userPayload = JwtAuthUserTokenHelper::fromJwtAsPayload($jwt, $config['publicKey']);
+        $this->assertTrue($userPayload->uid === intval($config['identifierId']));
+    }*/
+
     /*public function testPostAppAdd()
     {
         $clientAuthAdminSdk = new ClientAuthAdminSdk(Config::getConfig('user-sdk'));

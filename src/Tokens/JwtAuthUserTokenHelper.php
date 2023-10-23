@@ -2,6 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tokens;
 
+use Firebase\JWT\JWT;
 use YusamHub\Project0001ClientAuthSdk\Heads\UserTokenHead;
 use YusamHub\Project0001ClientAuthSdk\Payloads\UserTokenPayload;
 
@@ -19,11 +20,12 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
         int $userId,
         string $privateKey,
         string $hashBody,
-        int $expireSeconds = 30,
+        int $expireSeconds = 60,
         int $skewSeconds = 30,
     ): string
     {
         $now = curl_ext_time_utc();
+        JWT::$timestamp = $now;
 
         $userTokenPayload = new UserTokenPayload();
         $userTokenPayload->uid = $userId;
