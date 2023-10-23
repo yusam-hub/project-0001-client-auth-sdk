@@ -1,3 +1,7 @@
+#### default
+
+    cd /var/www/home-www/yusam/github/yusam-hub/project-0001/client-auth-sdk
+
 #### dockers
 
     docker exec -it yusam-php81 bash
