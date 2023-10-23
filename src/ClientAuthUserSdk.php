@@ -2,7 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAccessTokenHelper;
+use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAssertionHelper;
 
 class ClientAuthUserSdk extends BaseClientUserTokenSdk
 {
@@ -91,7 +91,7 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
             $this->api::METHOD_POST,
             '/api/user/app/access-token',
             [
-                'assertion' => JwtAccessTokenHelper::toJwt(
+                'assertion' => JwtAssertionHelper::toJwt(
                     $appId,
                     $this->identifierId,
                     $deviceUuid,

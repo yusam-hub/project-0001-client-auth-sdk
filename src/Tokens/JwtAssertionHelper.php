@@ -5,7 +5,7 @@ namespace YusamHub\Project0001ClientAuthSdk\Tokens;
 use YusamHub\Project0001ClientAuthSdk\Heads\AccessTokenHead;
 use YusamHub\Project0001ClientAuthSdk\Payloads\AccessTokenPayload;
 
-class JwtAccessTokenHelper extends JwtBaseTokenHelper
+class JwtAssertionHelper extends JwtBaseTokenHelper
 {
     /**
      * @param int $appId
