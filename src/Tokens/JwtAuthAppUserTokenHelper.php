@@ -3,9 +3,7 @@
 namespace YusamHub\Project0001ClientAuthSdk\Tokens;
 
 use Firebase\JWT\JWT;
-use YusamHub\Project0001ClientAuthSdk\Heads\AppTokenHead;
 use YusamHub\Project0001ClientAuthSdk\Heads\AppUserTokenHead;
-use YusamHub\Project0001ClientAuthSdk\Payloads\AppTokenPayload;
 use YusamHub\Project0001ClientAuthSdk\Payloads\AppUserTokenPayload;
 
 class JwtAuthAppUserTokenHelper extends JwtBaseTokenHelper
