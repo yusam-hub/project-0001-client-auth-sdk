@@ -36,7 +36,11 @@ class JwtBaseTokenHelper
      */
     protected static function baseFromJwtAsHeads(string $jwt): array
     {
-        list($headersB64, $payloadB64, $sig) = explode('.', $jwt);
+        $headersB64 = '';
+        $list = explode('.', $jwt);
+        if (count($list) === 3) {
+            list($headersB64, $payloadB64, $sig) = explode('.', $jwt);
+        }
         return (array) json_decode(base64_decode($headersB64), true);
     }
 
