@@ -5,14 +5,15 @@ namespace YusamHub\Project0001ClientAuthSdk;
 class ClientAuthAppSdk extends BaseClientAppTokenSdk
 {
     /**
-     * @param string $accessToken
+     * @param int $userId
+     * @param string $deviceUuid
      * @return array|null
      */
-    public function getApiAppAccessToken(string $accessToken): ?array
+    public function getApiAppUserKey(int $userId, string $deviceUuid): ?array
     {
         return $this->doBaseRequest(
             $this->api::METHOD_GET,
-            '/api/app/access-token',
+            '/api/app/user-key',
             get_defined_vars(),
             true
         );
