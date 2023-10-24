@@ -55,7 +55,7 @@ class JwtAuthAppUserTokenHelper extends JwtBaseTokenHelper
      * @param string $jwt
      * @return AppUserTokenHead
      */
-    protected static function fromJwtAsHeads(string $jwt): AppUserTokenHead
+    public static function fromJwtAsHeads(string $jwt): AppUserTokenHead
     {
         return new AppUserTokenHead(static::baseFromJwtAsHeads($jwt));
     }
