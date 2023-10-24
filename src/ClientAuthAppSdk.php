@@ -18,4 +18,19 @@ class ClientAuthAppSdk extends BaseClientAppTokenSdk
             true
         );
     }
+
+    /**
+     * @param int $appUserKeyId
+     * @param string $serviceKey
+     * @return array|null
+     */
+    public function getApiAppUserKeyService(int $appUserKeyId, string $serviceKey): ?array
+    {
+        return $this->doBaseRequest(
+            $this->api::METHOD_GET,
+            '/api/app/user-key-service',
+            get_defined_vars(),
+            true
+        );
+    }
 }
