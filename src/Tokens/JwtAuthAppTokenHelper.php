@@ -2,6 +2,7 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Tokens;
 
+use Firebase\JWT\JWT;
 use YusamHub\Project0001ClientAuthSdk\Heads\AppTokenHead;
 use YusamHub\Project0001ClientAuthSdk\Payloads\AppTokenPayload;
 
@@ -19,11 +20,12 @@ class JwtAuthAppTokenHelper extends JwtBaseTokenHelper
         int $appId,
         string $privateKey,
         string $hashBody,
-        int $expireSeconds = 30,
+        int $expireSeconds = 60,
         int $skewSeconds = 30,
     ): string
     {
         $now = curl_ext_time_utc();
+        JWT::$timestamp = $now;
 
         $appTokenPayload = new AppTokenPayload();
         $appTokenPayload->aid = $appId;
@@ -64,7 +66,7 @@ class JwtAuthAppTokenHelper extends JwtBaseTokenHelper
      * @param string $jwt
      * @return int|null
      */
-    public static function getAppFromJwtHeads(string $jwt): ?int
+    public static function getAppIdFromJwtHeads(string $jwt): ?int
     {
         $appTokenHead = static::fromJwtAsHeads($jwt);
         return $appTokenHead->aid;

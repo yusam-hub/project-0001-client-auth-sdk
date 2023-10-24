@@ -2,14 +2,14 @@
 
 namespace YusamHub\Project0001ClientAuthSdk\Payloads;
 
-class AccessTokenPayload
+class AppUserTokenPayload
 {
     public ?int $aid = null;
     public ?int $uid = null;
     public ?string $did = null;
-    public ?string $pkh = null;
     public ?int $iat = null;
     public ?int $exp = null;
+    public ?string $hb = null;
     public function __construct(array $properties = [])
     {
         foreach ($properties as $k => $v) {

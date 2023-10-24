@@ -2,8 +2,6 @@
 
 namespace YusamHub\Project0001ClientAuthSdk;
 
-use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAssertionHelper;
-
 class ClientAuthUserSdk extends BaseClientUserTokenSdk
 {
     /**
@@ -68,36 +66,6 @@ class ClientAuthUserSdk extends BaseClientUserTokenSdk
             ]),
             [
                 'deviceUuid' => $deviceUuid
-            ],
-            true
-        );
-    }
-
-    /**
-     * @param int $appId
-     * @param string $deviceUuid
-     * @param string $publicKeyHash
-     * @param string $privateKey
-     * @return array|null
-     */
-    public function postApiUserAppAccessToken(
-        int $appId,
-        string $deviceUuid,
-        string $publicKeyHash,
-        string $privateKey
-    ): ?array
-    {
-        return $this->doBaseRequest(
-            $this->api::METHOD_POST,
-            '/api/user/app/access-token',
-            [
-                'assertion' => JwtAssertionHelper::toJwt(
-                    $appId,
-                    $this->identifierId,
-                    $deviceUuid,
-                    $publicKeyHash,
-                    $privateKey
-                ),
             ],
             true
         );

@@ -61,23 +61,14 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         $appIdRefresh = $clientAuthUserSdk->postApiUserAppIdKeyRefresh(1,'12345678901234567890123456789012');
         $this->assertTrue(is_array($appIdRefresh));
         var_dump($appIdRefresh);
-
-        $accessToken = $clientAuthUserSdk->postApiUserAppAccessToken(
-            1,
-            '12345678901234567890123456789012',
-            $appIdRefresh['data']['publicKeyHash'],
-            $appIdRefresh['data']['privateKey'],
-        );
-        $this->assertTrue(is_array($accessToken));
-        var_dump($accessToken);
     }*/
 
-    /*public function testGetAppKeyList()
+    public function testGetAppKeyList()
     {
         $clientAuthUserSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
         $appKeyList = $clientAuthUserSdk->getApiUserAppIdKeyList(1);
         $this->assertTrue(is_array($appKeyList));
-    }*/
+    }
 
     /*public function testGetAppUserKey()
     {

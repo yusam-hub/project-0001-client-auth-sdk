@@ -66,7 +66,7 @@ class JwtAuthUserTokenHelper extends JwtBaseTokenHelper
      * @param string $jwt
      * @return int|null
      */
-    public static function getUserFromJwtHeads(string $jwt): ?int
+    public static function getUserIdFromJwtHeads(string $jwt): ?int
     {
         $userTokenHead = static::fromJwtAsHeads($jwt);
         return $userTokenHead->uid;
