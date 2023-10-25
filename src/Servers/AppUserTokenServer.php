@@ -14,6 +14,12 @@ class AppUserTokenServer extends BaseTokenServer
     protected ?string $sign;
     protected ?string $content;
 
+    /**
+     * @param ClientAuthAppSdk $clientAuthAppSdk
+     * @param string|null $token
+     * @param string|null $sign
+     * @param string|null $content
+     */
     public function __construct(ClientAuthAppSdk $clientAuthAppSdk,
                                 ?string $token,
                                 ?string $sign,
@@ -25,6 +31,10 @@ class AppUserTokenServer extends BaseTokenServer
         $this->content = $content;
     }
 
+    /**
+     * @return AppUserTokenAuthorizeModel
+     * @throws \Throwable
+     */
     public function getAuthorizeModelOrFail(): AppUserTokenAuthorizeModel
     {
         try {

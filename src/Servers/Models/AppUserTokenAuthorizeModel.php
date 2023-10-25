@@ -20,8 +20,11 @@ class AppUserTokenAuthorizeModel
 
     public ?string $deviceUuid = null;
 
-    public function assign(array $properties): AppUserTokenAuthorizeModel
+    public function assign(AppUserTokenAuthorizeModel|array $properties): AppUserTokenAuthorizeModel
     {
+        if ($properties instanceof AppUserTokenAuthorizeModel) {
+            $properties = (array) $properties;
+        }
         foreach($properties as $k => $v){
             if (property_exists($this, $k)) {
                 $this->{$k} = $v;
