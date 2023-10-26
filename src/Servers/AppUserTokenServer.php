@@ -31,12 +31,12 @@ class AppUserTokenServer extends BaseTokenServer
         $this->content = $content;
     }
 
-    protected function getApiAppUserKeyService(int $appUserKeyId, string $serviceKey): array|null
+    protected function getApiAppUserKeyService(int $appUserKeyId, string $serviceKey): ?array
     {
         return $this->clientAuthAppSdk->getApiAppUserKeyService($appUserKeyId, $serviceKey);
     }
 
-    protected function getApiAppUserKey(int $uid, string $did): array|null
+    protected function getApiAppUserKey(int $uid, string $did): ?array
     {
         return $this->clientAuthAppSdk->getApiAppUserKey($uid, $did);
     }
@@ -50,8 +50,7 @@ class AppUserTokenServer extends BaseTokenServer
         if (!empty($this->sign)) {
 
             $appUserKeyId = intval($this->token);
-            $serviceKey = $this->sign;
-
+            $serviceKey = strval($this->sign);
 
             $appUserKeyService = $this->getApiAppUserKeyService($appUserKeyId, $serviceKey);
 
