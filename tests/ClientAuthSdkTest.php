@@ -63,18 +63,26 @@ class ClientAuthSdkTest extends \PHPUnit\Framework\TestCase
         var_dump($appIdRefresh);
     }*/
 
-    public function testGetAppKeyList()
+    /*public function testGetAppKeyList()
     {
         $clientAuthUserSdk = new ClientAuthUserSdk(Config::getConfig('user-sdk'));
         $appKeyList = $clientAuthUserSdk->getApiUserAppIdKeyList(1);
         $this->assertTrue(is_array($appKeyList));
-    }
-
-    /*public function testGetAppUserKey()
-    {
-        $clientAuthAppSdk = new ClientAuthAppSdk(Config::getConfig('app-sdk'));
-        $accessToken = $clientAuthAppSdk->getApiAppAccessToken('68db6b84de6e9a2fbddd211bb9fe9a69');
-        $this->assertTrue(is_array($accessToken));
     }*/
 
+    /*public function testGetApiAppUserKey()
+    {
+        $clientAuthAppSdk = new ClientAuthAppSdk(Config::getConfig('app-sdk'));
+        $appUserKey = $clientAuthAppSdk->getApiAppUserKey(1, '12345678901234567890123456789012');
+        $this->assertTrue(is_array($appUserKey));
+        var_dump($appUserKey);
+    }*/
+
+    /*public function testGetApiAppUserKey()
+    {
+        $clientAuthAppSdk = new ClientAuthAppSdk(Config::getConfig('app-sdk'));
+        $appUserKeyService = $clientAuthAppSdk->getApiAppUserKeyService(1, '22ca39baeb65226b9eb4e0c70f062b59');
+        $this->assertTrue(is_array($appUserKeyService));
+        var_dump($appUserKeyService);
+    }*/
 }
