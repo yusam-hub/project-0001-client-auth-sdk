@@ -86,11 +86,11 @@ class AppUserTokenServer extends BaseTokenServer
 
         $appUserKey = $this->getApiAppUserKey($appUserHeads->uid, $appUserHeads->did);
 
-        if (!isset($appUserKey['publicKey'])) {
+        if (!isset($appUserKey['data']['publicKey'])) {
             throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40102], self::AUTH_ERROR_CODE_40102);
         }
 
-        $appUserTokenPayload = JwtAuthAppUserTokenHelper::fromJwtAsPayload($this->token, $appUserKey['publicKey']);
+        $appUserTokenPayload = JwtAuthAppUserTokenHelper::fromJwtAsPayload($this->token, $appUserKey['data']['publicKey']);
 
         if (is_null($appUserTokenPayload->aid) || is_null($appUserTokenPayload->uid) || is_null($appUserTokenPayload->did) || is_null($appUserTokenPayload->iat) || is_null($appUserTokenPayload->exp) || is_null($appUserTokenPayload->hb)) {
             throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40103], self::AUTH_ERROR_CODE_40103);
