@@ -3,25 +3,27 @@
 namespace YusamHub\Project0001ClientAuthSdk\Servers;
 
 use YusamHub\Project0001ClientAuthSdk\Exceptions\JsonAuthRuntimeException;
+use YusamHub\Project0001ClientAuthSdk\Servers\Models\ServiceKeyAuthorizeModel;
+
 class AppServiceKeyServer extends BaseTokenServer
 {
-    protected ?string $serviceKey;
+    protected ?array $serviceKeys;
     protected ?string $token;
     protected ?string $sign;
     protected ?string $content;
 
     /**
-     * @param string|null $serviceKey
+     * @param array|null $serviceKeys
      * @param string|null $token
      * @param string|null $sign
      * @param string|null $content
      */
-    public function __construct(?string $serviceKey,
+    public function __construct(?array $serviceKeys,
                                 ?string $token,
                                 ?string $sign,
                                 ?string $content)
     {
-        $this->serviceKey = $serviceKey;
+        $this->serviceKeys = $serviceKeys;
         $this->token = $token;
         $this->sign = $sign;
         $this->content = $content;
@@ -30,11 +32,11 @@ class AppServiceKeyServer extends BaseTokenServer
     /**
      * @return void
      */
-    public function authorizeOrFail(): void
+    public function getAuthorizeOrFail(): ServiceKeyAuthorizeModel
     {
-        if (empty($this->serviceKey)) {
+        if (empty($this->serviceKeys)) {
             throw new JsonAuthRuntimeException([
-                self::TOKEN_KEY_NAME => 'Service key not defined',
+                self::TOKEN_KEY_NAME => 'Service keys not defined',
             ]);
         }
         if (empty($this->token)) {
@@ -42,10 +44,13 @@ class AppServiceKeyServer extends BaseTokenServer
                 self::TOKEN_KEY_NAME => 'Token not defined',
             ]);
         }
-        if ($this->token != $this->serviceKey) {
+        if (!isset($this->serviceKeys[$this->token])) {
             throw new JsonAuthRuntimeException([
                 self::TOKEN_KEY_NAME => 'Invalid value',
             ]);
         }
+        return (new ServiceKeyAuthorizeModel())->assign([
+            'identifierId' => $this->serviceKeys[$this->token]
+        ]);
     }
 }
