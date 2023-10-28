@@ -32,7 +32,7 @@ class AppServiceKeyServer extends BaseTokenServer
     /**
      * @return void
      */
-    public function getAuthorizeOrFail(): ServiceKeyAuthorizeModel
+    public function getAuthorizeModelOrFail(): ServiceKeyAuthorizeModel
     {
         if (empty($this->serviceKeys)) {
             throw new JsonAuthRuntimeException([
